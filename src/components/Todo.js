@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import getTodo from "../api/getTodo";
 import TodoModal from "./TodoModal";
 import DeleteDialog from "./DeleteDialog";
 import construction from "../images/construction.jpg";
@@ -23,7 +24,7 @@ export default function Todo() {
 
   useEffect(() => {
     async function loadTodo() {
-      const todo = await getTodo();
+      const todo = await getTodo(id);
       console.log(todo);
       const { title, category, description, start_date, end_date } = todo;
       setTodo(todo);
@@ -35,23 +36,6 @@ export default function Todo() {
     }
     loadTodo();
   }, []);
-
-  const getTodo = async () => {
-    try {
-      const options = {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const response = await fetch(`http://localhost:3001/todo/${id}`, options);
-      const todo = await response.json();
-      return todo;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   function handleOpenModal() {
     setModalOpen(true);

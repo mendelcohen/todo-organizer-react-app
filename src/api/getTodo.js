@@ -1,6 +1,6 @@
 import { BASE_URL } from "./environmentConfig";
 
-export default async function getAllTodos(userId) {
+export default async function getTodo(id) {
   try {
     const options = {
       method: "GET",
@@ -9,10 +9,9 @@ export default async function getAllTodos(userId) {
         "Content-Type": "application/json",
       },
     };
-    console.log(process.env.NODE_ENV);
-    const response = await fetch(`${BASE_URL}/todos/all/${userId}`, options);
-    const todos = await response.json();
-    return todos;
+    const response = await fetch(`${BASE_URL}/todo/${id}`, options);
+    const todo = await response.json();
+    return todo;
   } catch (error) {
     console.log(error);
   }

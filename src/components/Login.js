@@ -1,6 +1,7 @@
 // import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import login from "../api/login";
 import { TextField, Button } from "@mui/material";
 
 export default function Login(props) {
@@ -26,28 +27,6 @@ export default function Login(props) {
       navigate(`/todos/${data.user}`);
     }
   };
-
-  async function login(params) {
-    try {
-      const options = {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(params),
-      };
-      const response = await fetch(
-        "http://localhost:3001/session/create",
-        options
-      );
-      const data = await response.json();
-      const loginResults = response.status;
-      return { loginResults, data };
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <form onSubmit={handleSubmit}>

@@ -16,6 +16,7 @@ export default function Todos(props) {
   useEffect(() => {
     console.log(todos);
   }, []);
+
   function handleViewTodo(todo) {
     navigate(`/todo/${todo.id}`);
   }

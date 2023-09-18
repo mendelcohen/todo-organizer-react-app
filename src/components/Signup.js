@@ -1,4 +1,5 @@
 import { useState } from "react";
+import createUser from "../api/createUser";
 import { TextField, Button } from "@mui/material";
 
 export default function Signup(props) {
@@ -14,33 +15,12 @@ export default function Signup(props) {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    createUser({ username, password });
+    const results = await createUser({ username, password });
+    console.log(results);
+    setSignup(false);
   };
-
-  async function createUser(data) {
-    try {
-      const options = {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      };
-      const response = await fetch(
-        "http://localhost:3001/user/create",
-        options
-      );
-      const results = await response.json();
-      setSignup(false);
-      console.log(results);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <form onSubmit={handleSubmit}>
