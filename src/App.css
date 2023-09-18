@@ -1,0 +1,276 @@
+.App {
+  text-align: center;
+}
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+Paper.landing-page-surface {
+  border-radius: 20px;
+}
+
+.landing-page-surface {
+  width: calc(100% - 96px);
+  max-width: 900px;
+  min-height: 500px;
+  margin: calc((100vh - 600px) / 2) auto;
+  padding: 24px;
+}
+
+.landing-page {
+  line-height: 40px;
+  margin-bottom: 24px;
+}
+
+.login {
+  width: 250px;
+}
+
+Button.landing-page {
+  line-height: 40px;
+  width: 250px;
+  margin-bottom: 24px;
+  padding: 0;
+}
+
+#landing-image {
+  min-height: 336px;
+  background-image: url('images/todolist.jpg');
+}
+
+.todos-surface {
+  padding: 12px;
+  min-width: 80%;
+  max-width: 80%;
+  margin: calc((100vh - 840px)/2) auto;
+  @media screen and (max-width: 600px) {
+    min-width: calc(100% - 48px);
+    /* max-width: 100%; */
+    margin: 12px;
+  }
+}
+
+.todo-card-left,
+.todo-card-right
+ {
+  font-size: 20px;
+  @media screen and (max-width: 600px) {
+    margin: 12px;
+  }
+  text-align: left;
+  min-height: 350px;
+  max-height: 350px;
+}
+
+.todo-card-left {
+  margin: 12px 6px 12px 12px;
+}
+
+.todo-card-right {
+  margin: 12px 12px 12px 6px;
+}
+
+.green {
+  color: green;
+}
+
+span.MuiCardHeader-title {
+  font-size: 24px;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* line-height: 30.75px; */
+}
+
+.todo {
+  margin: 0 12px;
+}
+
+#todo-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media only screen and (min-width: 600px) {
+    width: 500px;
+  };
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+
+#todo-form-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #D3D3D3;
+}
+
+.todo-form {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 40px;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+.todo-form-title {
+  width: 32%;
+}
+
+.todo-form > div > div {
+  min-width: 200px;
+  @media only screen and (min-width: 600px) {
+    width: 325px;
+  }
+}
+
+.todo-data {
+  text-align: left;
+}
+
+.todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-header > h2 {
+  margin: 0;
+}
+
+#delete {
+  margin-left: 12px;
+}
+
+.subtitle {
+  font-weight: 600;
+}
+
+#todo-category {
+  display: flex;
+  line-height: 24px;
+}
+
+#todo-category, 
+#todo-description {
+  background-color: #C5FAD5;
+  padding: 6px;
+}
+
+.todo-header,
+#todo-title, 
+#todo-dates {
+  background-color: #FFFFD2;
+  padding: 6px;
+}
+
+#todo-icon {
+  margin-right: 6px;
+  max-height: 24px;
+}
+
+.todo-surface {
+  padding: 12px;
+  min-width: calc(80% - 24px);
+  max-width: 80%;
+  margin: 24px auto 0 auto;
+  @media screen and (max-width: 600px) {
+    min-width: calc(100% - 48px);
+    /* max-width: 100%; */
+    margin: 12px;
+  }
+}
+
+#delete-todo {
+  color: #d0342c;
+}
+
+#warning {
+  font-size: 48px;
+}
+
+#delete-text {
+  color: #d0342c;
+}
+
+@media screen and (min-width: 601px) {
+  #delete-text {
+    display: grid;
+    grid-template-columns: 10% 90%;
+  }
+}
+
+
+div#calendar-surface {
+  padding: 12px;
+  min-height: calc(100vh - 300.5px);
+  max-height: calc(100vh - 300.5px);
+  min-width: calc(80% - 24px);
+  max-width: 80%;
+  margin: 12px auto 24px auto;
+  @media screen and (max-width: 600px) {
+    min-width: calc(100% - 48px);
+    margin: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #delete-text {
+    display: grid;
+    grid-template-columns: 15% 85%;
+  }
+  #calendar {
+    min-height: 450px;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  #delete-text {
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+}
+
+#calendar {
+  max-height: calc(100vh - 369px);
+  max-width: 100%;
+}
