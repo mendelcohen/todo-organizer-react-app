@@ -6,27 +6,51 @@ export default function Signup(props) {
   const { setSignup } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [usernameMessage, setUsernameMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
+    setUsernameMessage("");
+    setUsernameError(false);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setPasswordMessage("");
+    setPasswordError(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!username) {
+      setUsernameError(true);
+      setUsernameMessage("Please enter a valid username");
+      return;
+    }
+    if (!password) {
+      setPasswordError(true);
+      setPasswordMessage("Please enter a valid password");
+      return;
+    }
     const results = await createUser({ username, password });
+    //setSignupError
     console.log(results);
     setSignup(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign up</h2>
-      <div className="landing-page">
+    <form
+      className="w3-container w3-center w3-animate-left"
+      onSubmit={handleSubmit}
+    >
+      <h2 id="sign-in">Sign up</h2>
+      <div className={usernameError ? "landing-page-error" : "landing-page"}>
+        {/* <div className="landing-page"> */}
         <TextField
+          error={usernameError}
           size="small"
           className="login"
           placeholder="Username"
@@ -34,10 +58,12 @@ export default function Signup(props) {
           variant="outlined"
           value={username}
           onChange={handleUsernameChange}
+          helperText={usernameMessage}
         />
       </div>
-      <div className="landing-page">
+      <div className={passwordError ? "landing-page-error" : "landing-page"}>
         <TextField
+          error={passwordError}
           size="small"
           className="login"
           placeholder="Password"
@@ -45,6 +71,7 @@ export default function Signup(props) {
           variant="outlined"
           value={password}
           onChange={handlePasswordChange}
+          helperText={passwordMessage}
         />
       </div>
       <div>
@@ -55,7 +82,7 @@ export default function Signup(props) {
       <div>
         <Button
           className="landing-page"
-          variant="contained"
+          variant=""
           onClick={() => setSignup(false)}
         >
           Login

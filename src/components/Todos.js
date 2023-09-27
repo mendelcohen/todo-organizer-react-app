@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import getAllTodos from "../api/getAllTodos";
 import TodoCard from "./TodoCard";
+import Logout from "./Logout";
 import { useParams } from "react-router-dom";
 import TodoModal from "./TodoModal";
 import { Paper, Grid, Button } from "@mui/material";
@@ -19,8 +20,6 @@ export default function Todos() {
     if (jwt) {
       setSignedIn(true);
       getTodos();
-    } else {
-      alert("Please sign in");
     }
   }, []);
 
@@ -62,6 +61,7 @@ export default function Todos() {
                 >
                   New Todo
                 </Button>
+                <Logout />
               </span>
             </h1>
           </div>

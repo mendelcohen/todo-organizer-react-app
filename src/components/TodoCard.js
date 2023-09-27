@@ -1,7 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteDialog from "./DeleteDialog";
-import { Card, CardHeader, CardContent, Button, Checkbox } from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Button,
+  Checkbox,
+  Alert,
+} from "@mui/material";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
@@ -11,11 +18,8 @@ export default function Todos(props) {
   const { className, todoTitle, subheader, todos, getTodos } = props;
   const [dialogOpen, setDialogOpen] = useState(false);
   const [todoIds, setTodoIds] = useState(null);
+  const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(todos);
-  }, []);
 
   function handleViewTodo(todo) {
     navigate(`/todo/${todo.id}`);
@@ -26,8 +30,7 @@ export default function Todos(props) {
     setTodoIds({ id, userId });
   }
 
-  async function handleCheckedTodo(todoId) {
-    console.log("HERE");
+  async function handleCheckedTodo(todo) {
     try {
       const options = {
         method: "PUT",
@@ -37,10 +40,17 @@ export default function Todos(props) {
         },
       };
       const response = await fetch(
-        `http://localhost:3001/todo/edit-complete/${todoId}`,
+        `http://localhost:3001/todo/edit-complete/${todo.id}`,
         options
       );
-      const { todo } = await response.json();
+      const result = await response.json();
+      console.log(result);
+      if (result.update.is_completed) {
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false);
+        }, 5000);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +81,7 @@ export default function Todos(props) {
               return (
                 <div key={index} className="todo-row">
                   <div className="todo">
-                    <Checkbox onChange={() => handleCheckedTodo(todo.id)} />
+                    <Checkbox onChange={(event) => handleCheckedTodo(todo)} />
                     {todo.title}
                   </div>
                   <div>
@@ -95,6 +105,16 @@ export default function Todos(props) {
                 </div>
               );
             })}
+          {alert && (
+            <Alert
+              severity="warning"
+              onClose={() => {
+                setAlert(false);
+              }}
+            >
+              Checked Todos will not appear next time this page loads.
+            </Alert>
+          )}
         </CardContent>
       </Card>
       <DeleteDialog

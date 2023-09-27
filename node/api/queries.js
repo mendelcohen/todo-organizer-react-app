@@ -54,7 +54,7 @@ function createUser(request, response) {
 function getTodos(request, response) {
   const id = parseInt(request.params.userId);
   client.query(
-    `SELECT * FROM todos WHERE user_id = ${id} ORDER BY id ASC`,
+    `SELECT * FROM todos WHERE user_id = ${id} AND is_completed = false ORDER BY id ASC`,
     (error, results) => {
       if (error) {
         throw error;
@@ -128,17 +128,19 @@ function editTodo(request, response) {
 function editCompleteTodo(request, response) {
   const id = parseInt(request.params.id);
   client.query(
-    `UPDATE todos SET is_completed = NOT is_completed WHERE id = $1`,
+    `UPDATE todos SET is_completed = NOT is_completed WHERE id = $1 returning is_completed`,
     [id],
     (error, results) => {
       if (error) {
         throw error;
       }
+      const result = results.rows[0];
+      return response.status(200).json({
+        message: "Your todo has been updated",
+        update: result,
+      });
     }
   );
-  return response.status(200).json({
-    message: "Your todo has been updated",
-  });
 }
 
 function deleteTodo(request, response) {

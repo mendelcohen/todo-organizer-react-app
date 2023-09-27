@@ -5,34 +5,63 @@ import login from "../api/login";
 import { TextField, Button } from "@mui/material";
 
 export default function Login(props) {
-  const { setSignup } = props;
+  const { setSignup, setSession } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [usernameMessage, setUsernameMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
+    setUsernameMessage("");
+    setUsernameError(false);
+    setLoginError("");
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setPasswordMessage("");
+    setPasswordError(false);
+    setLoginError("");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!username) {
+      setUsernameError(true);
+      setUsernameMessage("Please enter a valid username");
+      return;
+    }
+    if (!password) {
+      setPasswordError(true);
+      setPasswordMessage("Please enter a valid password");
+      return;
+    }
     const results = await login({ username, password });
     const { loginResults, data } = results;
     if (loginResults === 200) {
       localStorage.setItem("jwt", data.token);
+      setSession(true);
       navigate(`/todos/${data.user}`);
+    } else {
+      setLoginError("Invalid username or password");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign in</h2>
-      <div className="landing-page">
+    <form
+      className="w3-container w3-center w3-animate-left"
+      onSubmit={handleSubmit}
+    >
+      <h2 id={loginError ? "sign-in-error" : "sign-in"}>Sign in</h2>
+      {loginError && <div id="sign-in-error-message">{loginError}</div>}
+      <div className={usernameError ? "landing-page-error" : "landing-page"}>
         <TextField
+          error={usernameError}
           size="small"
           className="login"
           placeholder="Username"
@@ -40,10 +69,12 @@ export default function Login(props) {
           variant="outlined"
           value={username}
           onChange={handleUsernameChange}
+          helperText={usernameMessage}
         />
       </div>
-      <div className="landing-page">
+      <div className={passwordError ? "landing-page-error" : "landing-page"}>
         <TextField
+          error={passwordError}
           size="small"
           className="login"
           placeholder="Password"
@@ -51,6 +82,7 @@ export default function Login(props) {
           variant="outlined"
           value={password}
           onChange={handlePasswordChange}
+          helperText={passwordMessage}
         />
       </div>
       <div>
@@ -61,7 +93,7 @@ export default function Login(props) {
       <div>
         <Button
           className="landing-page"
-          variant="contained"
+          variant=""
           onClick={() => setSignup(true)}
         >
           Register
