@@ -76,7 +76,7 @@ export default function Todos() {
             setWantsTodos={setWantsTodos}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <TodoCard
             className="todo-card-left"
             todos={essentialTodos}
@@ -88,11 +88,11 @@ export default function Todos() {
             className="todo-card-left"
             todos={responsibilitiesTodos}
             todoTitle="Tasks"
-            subheader="Todos that are my responsibilities"
+            subheader="Todos that are my tasks"
             getTodos={getTodos}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <TodoCard
             className="todo-card-right"
             todos={urgentTodos}
@@ -104,7 +104,7 @@ export default function Todos() {
             className="todo-card-right"
             todos={wantsTodos}
             todoTitle="Wants"
-            subheader="Todos that I hope to get done"
+            subheader="Todos that would be nice to do"
             getTodos={getTodos}
           />
         </Grid>

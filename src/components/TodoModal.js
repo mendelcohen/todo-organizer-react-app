@@ -152,6 +152,7 @@ export default function TodoModal(props) {
           <div className="todo-form-title">Description:</div>
           <TextField
             multiline
+            maxRows={3}
             notched="false"
             variant="outlined"
             onChange={handleTodoDescription}
@@ -200,7 +201,7 @@ export default function TodoModal(props) {
           }
           onClick={todoHandler}
         >
-          {type === "Create" ? "Add Todo" : "Edit Todo"}
+          {type === "Create" ? "Add Todo" : "Save Todo"}
         </Button>
       </Box>
     </Modal>

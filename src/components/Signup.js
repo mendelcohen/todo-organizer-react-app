@@ -42,13 +42,9 @@ export default function Signup(props) {
   };
 
   return (
-    <form
-      className="w3-container w3-center w3-animate-left"
-      onSubmit={handleSubmit}
-    >
+    <form id="signup" onSubmit={handleSubmit}>
       <h2 id="sign-in">Sign up</h2>
       <div className={usernameError ? "landing-page-error" : "landing-page"}>
-        {/* <div className="landing-page"> */}
         <TextField
           error={usernameError}
           size="small"
@@ -82,7 +78,7 @@ export default function Signup(props) {
       <div>
         <Button
           className="landing-page"
-          variant=""
+          variant="outlined"
           onClick={() => setSignup(false)}
         >
           Login

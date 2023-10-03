@@ -53,10 +53,7 @@ export default function Login(props) {
   };
 
   return (
-    <form
-      className="w3-container w3-center w3-animate-left"
-      onSubmit={handleSubmit}
-    >
+    <form id="login" onSubmit={handleSubmit}>
       <h2 id={loginError ? "sign-in-error" : "sign-in"}>Sign in</h2>
       {loginError && <div id="sign-in-error-message">{loginError}</div>}
       <div className={usernameError ? "landing-page-error" : "landing-page"}>
@@ -93,7 +90,7 @@ export default function Login(props) {
       <div>
         <Button
           className="landing-page"
-          variant=""
+          variant="outlined"
           onClick={() => setSignup(true)}
         >
           Register

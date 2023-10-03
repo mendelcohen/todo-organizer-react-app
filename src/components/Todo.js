@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import getTodo from "../api/getTodo";
 import TodoModal from "./TodoModal";
 import DeleteDialog from "./DeleteDialog";
+import Logout from "./Logout";
 import construction from "../images/construction.jpg";
 import { Paper, Typography, Button } from "@mui/material";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
@@ -68,6 +69,7 @@ export default function Todo() {
               <Button id="delete" onClick={handleOpenDialog}>
                 Delete
               </Button>
+              <Logout />
             </div>
           </div>
           <Typography id="todo-category">

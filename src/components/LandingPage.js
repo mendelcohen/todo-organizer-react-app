@@ -14,20 +14,21 @@ export default function LandingPage(props) {
   }, []);
 
   return (
-    <Paper className="landing-page-surface">
-      <div>
-        <h1>Todo List Organizer</h1>
-      </div>
-      <Grid container justifyContent="center">
-        <Grid item xs={12} md={6}>
-          {!signup && <Login setSignup={setSignup} setSession={setSession} />}
-          {signup && <Signup setSignup={setSignup} />}
+    <div style={{ position: "relative" }}>
+      <Paper className="landing-page-surface">
+        <div>
+          <h1>Todo List Organizer</h1>
+        </div>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={6}>
+            {!signup && <Login setSignup={setSignup} setSession={setSession} />}
+            {signup && <Signup setSignup={setSignup} />}
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <img id="todolist-pic" src={todolist} alt="" />
+          </Grid>
         </Grid>
-
-        <Grid item xs={0} md={6}>
-          <img id="todolist-pic" src={todolist} alt="" />
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </div>
   );
 }

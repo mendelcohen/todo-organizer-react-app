@@ -73,8 +73,19 @@ export default function Todos(props) {
             }
             title={todoTitle}
             subheader={subheader}
+            sx={{ paddingBottom: "6px" }}
           ></CardHeader>
         </div>
+        {alert && (
+          <Alert
+            severity="warning"
+            onClose={() => {
+              setAlert(false);
+            }}
+          >
+            Checked Todos will not appear next time this page loads.
+          </Alert>
+        )}
         <CardContent>
           {todos.length > 0 &&
             todos.map((todo, index) => {
@@ -105,16 +116,6 @@ export default function Todos(props) {
                 </div>
               );
             })}
-          {alert && (
-            <Alert
-              severity="warning"
-              onClose={() => {
-                setAlert(false);
-              }}
-            >
-              Checked Todos will not appear next time this page loads.
-            </Alert>
-          )}
         </CardContent>
       </Card>
       <DeleteDialog
