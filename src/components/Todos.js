@@ -24,8 +24,9 @@ export default function Todos() {
   }, []);
 
   async function getTodos() {
-    const todos = await getAllTodos(userId);
-    const { Essentials, Urgent, Responsibilities, Wants } = todos;
+    const results = await getAllTodos(userId);
+    const { data } = results;
+    const { Essentials, Urgent, Responsibilities, Wants } = data;
     setEssentialTodos(Essentials?.length > 0 ? Essentials : []);
     setUrgentTodos(Urgent?.length > 0 ? Urgent : []);
     setResponsibilitiesTodos(

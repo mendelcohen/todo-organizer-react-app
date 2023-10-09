@@ -1,19 +1,14 @@
+import axios from "axios";
 import { BASE_URL } from "./environmentConfig";
 
 export default async function login(params) {
   try {
-    const options = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params),
-    };
-    const response = await fetch(`${BASE_URL}/session/create`, options);
-    const data = await response.json();
-    const loginResults = response.status;
-    return { loginResults, data };
+    const results = await axios({
+      method: "post",
+      url: `${BASE_URL}/session/create`,
+      data: params,
+    });
+    return results;
   } catch (error) {
     console.log(error);
   }

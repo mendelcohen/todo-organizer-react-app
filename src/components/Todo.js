@@ -25,9 +25,9 @@ export default function Todo() {
 
   useEffect(() => {
     async function loadTodo() {
-      const todo = await getTodo(id);
-      console.log(todo);
-      const { title, category, description, start_date, end_date } = todo;
+      const results = await getTodo(id);
+      const { data } = results;
+      const { title, category, description, start_date, end_date } = data;
       setTodo(todo);
       setTitle(title);
       setCategory(category);

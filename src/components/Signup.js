@@ -1,9 +1,9 @@
 import { useState } from "react";
 import createUser from "../api/createUser";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Alert } from "@mui/material";
 
 export default function Signup(props) {
-  const { setSignup } = props;
+  const { setSignup, alertContent, setAlertContent } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -35,9 +35,16 @@ export default function Signup(props) {
       setPasswordMessage("Please enter a valid password");
       return;
     }
-    const results = await createUser({ username, password });
-    //setSignupError
-    console.log(results);
+    try {
+      const results = await createUser({ username, password });
+      const { message } = results.data;
+      setAlertContent(message);
+      setTimeout(() => {
+        setAlertContent("");
+      }, 5000);
+    } catch (error) {
+      console.log(error);
+    }
     setSignup(false);
   };
 

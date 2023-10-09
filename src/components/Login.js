@@ -42,8 +42,8 @@ export default function Login(props) {
       return;
     }
     const results = await login({ username, password });
-    const { loginResults, data } = results;
-    if (loginResults === 200) {
+    const { status, data } = results;
+    if (status === 200) {
       localStorage.setItem("jwt", data.token);
       setSession(true);
       navigate(`/todos/${data.user}`);

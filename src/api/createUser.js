@@ -1,18 +1,13 @@
+import axios from "axios";
 import { BASE_URL } from "./environmentConfig";
 
-export default async function login({ username, password }) {
+export default async function createUser({ username, password }) {
   try {
-    const options = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    };
-    const response = await fetch(`${BASE_URL}/user/create`, options);
-    const results = await response.json();
+    const results = await axios({
+      method: "post",
+      url: `${BASE_URL}/user/create`,
+      data: { username, password },
+    });
     return results;
   } catch (error) {
     console.log(error);
