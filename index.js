@@ -8,6 +8,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static("build"));
 const auth = require("./node/auth");
 
 const queries = require("./node/queries");
