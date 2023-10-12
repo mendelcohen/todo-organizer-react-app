@@ -8,9 +8,9 @@ app.use(
   })
 );
 app.use(express.json());
-const auth = require("./auth");
+const auth = require("./node/auth");
 
-const queries = require("./queries");
+const queries = require("./node/queries");
 const {
   createSession,
   getTodos,
