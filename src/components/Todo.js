@@ -27,8 +27,9 @@ export default function Todo() {
     async function loadTodo() {
       const results = await getTodo(id);
       const { data } = results;
+      console.log(data);
       const { title, category, description, start_date, end_date } = data;
-      setTodo(todo);
+      setTodo(data);
       setTitle(title);
       setCategory(category);
       setDescription(description);

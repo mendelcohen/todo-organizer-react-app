@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../api/environmentConfig";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -27,10 +28,7 @@ export default function DeleteDialog(props) {
           "Content-Type": "application/json",
         },
       };
-      const response = await fetch(
-        `http://localhost:3001/todo/delete/${id}`,
-        options
-      );
+      const response = await fetch(`${BASE_URL}/todo/delete/${id}`, options);
       console.log(response);
       const result = await response.json();
       console.log(result);

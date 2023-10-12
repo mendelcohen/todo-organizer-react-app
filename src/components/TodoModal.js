@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { BASE_URL } from "../api/environmentConfig";
 import {
   Button,
   Box,
@@ -102,9 +103,7 @@ export default function TodoModal(props) {
         body: JSON.stringify(params),
       };
       const response = await fetch(
-        `http://localhost:3001/todo/${
-          type === "Create" ? "create" : `edit/${id}`
-        }`,
+        `${BASE_URL}/todo/${type === "Create" ? "create" : `edit/${id}`}`,
         options
       );
       const { todo } = await response.json();

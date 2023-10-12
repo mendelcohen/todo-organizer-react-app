@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../api/environmentConfig";
 import DeleteDialog from "./DeleteDialog";
 import {
   Card,
@@ -40,7 +41,7 @@ export default function Todos(props) {
         },
       };
       const response = await fetch(
-        `http://localhost:3001/todo/edit-complete/${todo.id}`,
+        `${BASE_URL}/todo/edit-complete/${todo.id}`,
         options
       );
       const result = await response.json();
