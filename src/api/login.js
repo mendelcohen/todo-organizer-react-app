@@ -8,6 +8,7 @@ export default async function login(params) {
       url: `${BASE_URL}/session/create`,
       data: params,
     });
+    console.log(results);
     return results;
   } catch (error) {
     console.log(error);
