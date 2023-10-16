@@ -28,10 +28,7 @@ export default function DeleteDialog(props) {
           "Content-Type": "application/json",
         },
       };
-      const response = await fetch(`${BASE_URL}/todo/delete/${id}`, options);
-      console.log(response);
-      const result = await response.json();
-      console.log(result);
+      await fetch(`${BASE_URL}/todo/delete/${id}`, options);
       handleCloseDialog();
       setDisabled(false);
       if (getTodos) {

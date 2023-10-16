@@ -45,7 +45,6 @@ export default function Todos(props) {
         options
       );
       const result = await response.json();
-      console.log(result);
       if (result.update.is_completed) {
         setAlert(true);
         setTimeout(() => {
