@@ -26,38 +26,47 @@ Paper.landing-page-surface {
     transform: translateX(0%);
   }
 }
-.landing-page-surface {
-  @media screen and (min-width: 900px) {
+
+@media screen and (min-width: 900px) {
+  .landing-page-surface {
     width: calc(100% - 96px);
     max-width: 900px;
     min-height: 500px;
     margin: calc((100vh - 600px) / 2) auto;
     padding: 24px;
   }
-  @media screen and (max-width: 899px) {
+}
+@media screen and (max-width: 899px) {
+  .landing-page-surface {
     width: 488px;
     margin: calc((100vh - 784px) / 2) auto;
     padding: 6px;
   }
-  @media screen and (max-width: 500px) {
+}
+@media screen and (max-width: 500px) {
+  .landing-page-surface {
     width: calc(100% - 24px);
     margin: calc((100vh - 683px) / 2) auto;
     padding: 6px;
   }
 }
 
-#todolist-pic {
-  @media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) {
+  #todolist-pic {
     margin: 62px 0;
     min-width: 378px;
     max-width: 378px;
     min-height: 252px;
     max-height: 252px;
   }
-  @media screen and (max-width: 899px) {
+}
+@media screen and (max-width: 899px) {
+  #todolist-pic {
     max-width: 476px;
   }
-  @media screen and (max-width: 500px) {
+}
+@media screen and (max-width: 500px) {
+  #todolist-pic {
     max-width: calc(100vw - 36px);
   }
 }
@@ -284,7 +293,7 @@ span.MuiCardHeader-title {
 div#calendar-surface {
   background-color: #FFD839;
   padding: 12px;
-  min-height: calc(100vh - 300.5px);
+  /* min-height: calc(100vh - 300.5px); */
   max-height: calc(100vh - 300.5px);
   min-width: calc(80% - 24px);
   max-width: 80%;

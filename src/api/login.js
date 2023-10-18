@@ -5,7 +5,8 @@ export default async function login(params) {
   try {
     const results = await axios({
       method: "post",
-      url: `${BASE_URL}/session/create`,
+      //url: `${BASE_URL}/session/create`,
+      url: "/session/create",
       data: params,
     });
     return results;

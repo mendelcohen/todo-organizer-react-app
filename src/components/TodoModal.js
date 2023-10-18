@@ -93,6 +93,7 @@ export default function TodoModal(props) {
       start_date: startDate,
       end_date: endDate,
     };
+    const data = type === "Create" ? params : { ...params, id: id };
     try {
       const options = {
         method: type === "Create" ? "POST" : "PUT",
@@ -100,14 +101,18 @@ export default function TodoModal(props) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(params),
+        body: JSON.stringify(data),
       };
       const response = await fetch(
-        `${BASE_URL}/todo/${type === "Create" ? "create" : `edit/${id}`}`,
+        `/todo/${type === "Create" ? "create" : "edit"}`,
         options
       );
+      // const response = await fetch(
+      //   `${BASE_URL}/todo/${type === "Create" ? "create" : `edit/${id}`}`,
+      //   options
+      // );
       const { todo } = await response.json();
-
+      console.log(todo);
       if (type === "Create") {
         todo.category === "Essentials"
           ? setEssentialTodos((prev) => [...prev, todo])

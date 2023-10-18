@@ -24,16 +24,17 @@ export default function Todos() {
   }, []);
 
   async function getTodos() {
-    const results = await getAllTodos(userId);
-    const { data } = results;
-    const { Essentials, Urgent, Responsibilities, Wants } = data;
-    setEssentialTodos(Essentials?.length > 0 ? Essentials : []);
-    setUrgentTodos(Urgent?.length > 0 ? Urgent : []);
-    setResponsibilitiesTodos(
-      Responsibilities?.length > 0 ? Responsibilities : []
-    );
-    setWantsTodos(Wants?.length > 0 ? Wants : []);
-    return;
+    const results = await getAllTodos(parseInt(userId));
+    if (results.data) {
+      const { data } = results;
+      const { Essentials, Urgent, Responsibilities, Wants } = data;
+      setEssentialTodos(Essentials?.length > 0 ? Essentials : []);
+      setUrgentTodos(Urgent?.length > 0 ? Urgent : []);
+      setResponsibilitiesTodos(
+        Responsibilities?.length > 0 ? Responsibilities : []
+      );
+      setWantsTodos(Wants?.length > 0 ? Wants : []);
+    }
   }
 
   function handleOpenModal() {

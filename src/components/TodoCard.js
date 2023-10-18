@@ -39,11 +39,13 @@ export default function Todos(props) {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ id: todo.id }),
       };
-      const response = await fetch(
-        `${BASE_URL}/todo/edit-complete/${todo.id}`,
-        options
-      );
+      const response = await fetch("/todo/edit-complete", options);
+      // const response = await fetch(
+      //   `${BASE_URL}/todo/edit-complete/${todo.id}`,
+      //   options
+      // );
       const result = await response.json();
       if (result.update.is_completed) {
         setAlert(true);

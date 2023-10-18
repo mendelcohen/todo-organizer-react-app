@@ -37,15 +37,20 @@ export default function Signup(props) {
     }
     try {
       const results = await createUser({ username, password });
+      if (results.response?.status === 422) {
+        const { message } = results.response.data;
+        setAlertContent(message);
+        return;
+      }
       const { message } = results.data;
       setAlertContent(message);
       setTimeout(() => {
         setAlertContent("");
       }, 5000);
+      setSignup(false);
     } catch (error) {
       console.log(error);
     }
-    setSignup(false);
   };
 
   return (
