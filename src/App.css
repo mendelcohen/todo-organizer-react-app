@@ -123,7 +123,10 @@ Button.landing-page {
   min-width: 80%;
   max-width: 80%;
   margin: calc((100vh - 840px)/2) auto;
-  @media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 600px) {
+  .todos-surface {
     min-width: calc(100% - 48px);
     margin: 12px;
   }
@@ -134,12 +137,16 @@ div.todo-card-right
  {
   overflow: scroll;
   font-size: 20px;
-  @media screen and (max-width: 600px) {
-    margin: 12px;
-  }
   text-align: left;
   min-height: 350px;
   max-height: 350px;
+}
+
+@media screen and (max-width: 600px) {
+  div.todo-card-left,
+  div.todo-card-right {
+    margin: 12px;
+  }
 }
 
 .todo-card-left {
@@ -177,15 +184,17 @@ span.MuiCardHeader-title {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media only screen and (min-width: 600px) {
-    width: 500px;
-  };
   width: 300px;
   background-color: white;
   padding: 20px;
   border: 1px solid black;
 }
 
+@media only screen and (min-width: 600px) {
+  #todo-modal {
+    width: 500px;
+  }
+};
 
 #todo-form-header {
   font-size: 20px;
@@ -208,7 +217,10 @@ span.MuiCardHeader-title {
 
 .todo-form > div > div {
   min-width: 200px;
-  @media only screen and (min-width: 600px) {
+}
+
+@media only screen and (min-width: 600px) {
+  .todo-form > div > div {
     width: 325px;
   }
 }
@@ -293,12 +305,15 @@ span.MuiCardHeader-title {
 div#calendar-surface {
   background-color: #FFD839;
   padding: 12px;
-  /* min-height: calc(100vh - 300.5px); */
-  max-height: calc(100vh - 300.5px);
+  min-height: calc(100vh - 300.5px);
+  /* max-height: calc(100vh - 300.5px); */
   min-width: calc(80% - 24px);
   max-width: 80%;
   margin: 12px auto 24px auto;
-  @media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 600px) {
+  div#calendar-surface {
     min-width: calc(100% - 48px);
     margin: 12px;
   }
