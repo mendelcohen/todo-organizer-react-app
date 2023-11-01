@@ -122,7 +122,8 @@ Button.landing-page {
   padding: 12px;
   min-width: 80%;
   max-width: 80%;
-  margin: calc((100vh - 840px)/2) auto;
+  /* margin: calc((100vh - 840px)/2) auto; */
+  margin: 24px auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -305,11 +306,10 @@ span.MuiCardHeader-title {
 div#calendar-surface {
   background-color: #FFD839;
   padding: 12px;
-  min-height: calc(100vh - 300.5px);
-  /* max-height: calc(100vh - 300.5px); */
+  /* min-height: calc(100vh - 300.5px); */
   min-width: calc(80% - 24px);
   max-width: 80%;
-  margin: 12px auto 24px auto;
+  margin: 12px auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -317,16 +317,21 @@ div#calendar-surface {
     min-width: calc(100% - 48px);
     margin: 12px;
   }
+  #calendar {
+    min-height: 450px;
+    max-width: 100%;
+  }
+}
+
+#calendar {
+  /* max-height: calc(100vh - 369px); */
+  max-width: 100%;
 }
 
 @media screen and (max-width: 600px) {
   #delete-text {
     display: grid;
     grid-template-columns: 15% 85%;
-  }
-  #calendar {
-    min-height: 450px;
-    max-width: 100%;
   }
 }
 @media screen and (max-width: 450px) {
@@ -336,7 +341,3 @@ div#calendar-surface {
   }
 }
 
-#calendar {
-  max-height: calc(100vh - 369px);
-  max-width: 100%;
-}
