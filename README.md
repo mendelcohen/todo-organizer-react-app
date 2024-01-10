@@ -27,3 +27,7 @@ npm run start
 - Replace remaining fetch api calls with axios.
 
 - Install a JavaScript calendar library in the view todo page for users to see their scheduled todos in a calendar format. The calendar should also have it's own path to display all the todos in a calendar format.
+
+- Explore migrating from create react app to Next JS
+
+- Add Typescript
